@@ -11,21 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::post('/q', function () {
+Route::any('/', function () {
     $detector = new \Jaybizzle\CrawlerDetect\CrawlerDetect;
 
-    // Check the user agent of the current 'visitor'
-	if ($detector->isCrawler(request()->get('q'))) {
+    $result = $detector->isCrawler(request()->get('q'));
+
+	if (request()->wantsJson()) {
 		return response()->json([
-		    'result' => true
+		    'result' => $result
 		]);
 	}
 
-	return response()->json([
-	    'result' => false
-	]);
+	return view('welcome', compact('result'));
 });

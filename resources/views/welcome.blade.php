@@ -28,33 +28,52 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,500,700" rel="stylesheet">
 
-<script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
 
         <script type="text/javascript">
             
             $(function() {
+                var delay = (function(){
+                    var timer = 0;
+                    return function(callback, ms) {
+                        clearTimeout (timer);
+                        timer = setTimeout(callback, ms);
+                    };
+                })();
+
                 $.ajaxSetup({
-                    headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' }
+                    headers: { 
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    }
                 });
 
                 $('input').on('keyup', function() {
-                    $.ajax({
-                        method: "POST",
-                        url: "/q",
-                        data: { q: $(this).val() }
-                    })
-                    .done(function( msg ) {
-                        if(msg.result) {
-                            $('.is-bot').css('display', 'inline-block');
-                            $('.not-bot').hide();
-                        } else {
-                            $('.is-bot').hide();
-                            $('.not-bot').css('display', 'inline-block');
-                        }
-                    });
+                    var agent = $(this).val();
+
+                    delay(function() {
+                        $.ajax({
+                            method: "POST",
+                            url: "/",
+                            data: { q: agent }
+                        })
+                        .done(function( msg ) {
+                            if ( msg.result ) {
+                                $('.is-bot').css('display', 'inline-block');
+                                $('.not-bot').hide();
+                            } else {
+                                $('.is-bot').hide();
+                                $('.not-bot').css('display', 'inline-block');
+                            }
+
+                            $('.contact').show();
+
+                            history.pushState(null, null, '?q=' + agent);
+                        });
+                    }, 1000 );
                 });
             });
 
@@ -63,7 +82,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #f6f8fa;
                 color: #48505a;
                 font-family: 'Roboto', sans-serif;
                 font-weight: 100;
@@ -83,6 +102,7 @@
                 text-align: center;
                 font-weight: 100;
                 box-sizing: border-box;
+                margin: 80px 0 40px;
             }
 
             input:focus {
@@ -137,9 +157,21 @@
                 height: 59px;
             }
 
+                .result-wrap .contact {
+                    display: block;
+                    font-size: 11px;
+                    margin-top: 10px;
+                    font-weight: 400;
+                    display: none;
+                }
+
+                    .result-wrap  a {
+                        color: inherit;
+                    }
+
             .result {
                 display: none;
-                font-weight: 300;
+                font-weight: 400;
                 border-radius: 5px;
                 padding: 20px;
             }
@@ -163,20 +195,22 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    <img src="https://cloud.githubusercontent.com/assets/340752/20685655/251a6466-b5ad-11e6-9509-24d12f24a042.png" style="width: 128px; height: 128px; vertical-align: middle" /> CrawlerDetect
+                    <img src="https://cloud.githubusercontent.com/assets/340752/20685655/251a6466-b5ad-11e6-9509-24d12f24a042.png" style="width: 128px; height: 128px; vertical-align: middle; margin-bottom: 20px;" /><br />CrawlerDetect
                 </div>
 
                 <div class="links">
-                    <input type="text" />
+                    <input type="text" placeholder="Enter user agent" value="{{ \Request::get('q') }}"/>
 
                     <div class="result-wrap">
-                        <div class="result is-bot">
+                        <div class="result is-bot" @if($result)style="display: inline-block"@endif>
                             User agent is a bot
                         </div>
 
-                        <div class="result not-bot">
+                        <div class="result not-bot" @if(! $result)style="display: inline-block"@endif>
                             User agent is NOT a bot
                         </div>
+
+                        <div class="contact" @if(\Request::has('q'))style="display: block"@endif>Think this is incorrect? <a href="https://github.com/JayBizzle/Crawler-Detect/issues/new?title=Incorrect agent result&amp;body={!! urlencode(\Request::get('q')) !!}" target="_blank">Let us know</a></div>
                     </div>
                 </div>
             </div>
