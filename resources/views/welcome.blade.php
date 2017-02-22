@@ -41,8 +41,8 @@
                     el: '#app',
                     data: {
                         query: '{!! \Request::get('q') !!}',
-                        isCrawler: false,
-                        processing: true,
+                        isCrawler: {{ $result ? 'true' : 'false' }},
+                        processing: {{ $result ? 'false' : 'true' }},
                     },
                     methods: {
                         fetchData: function() {
@@ -104,6 +104,32 @@
                 font-weight: 100;
                 height: 100vh;
                 margin: 0;
+            }
+
+            [v-cloak] .v-cloak--block {
+                display: block!important;
+            }
+
+            [v-cloak] .v-cloak--inline {
+                display: inline!important;
+            }
+
+            [v-cloak] .v-cloak--inlineBlock {
+                display: inline-block!important;
+            }
+
+            [v-cloak] .v-cloak--hidden {
+                display: none!important;
+            }
+
+            [v-cloak] .v-cloak--invisible {
+                visibility: hidden!important;
+            }
+
+            .v-cloak--block,
+            .v-cloak--inline,
+            .v-cloak--inlineBlock {
+                display: none!important;
             }
 
             input {
@@ -224,19 +250,19 @@
                 <div class="links">
                     <input type="text" placeholder="Enter user agent" v-model="query" v-on:keyup="fetchData" />
 
-                    <div class="result-wrap">
+                    <div class="result-wrap" v-cloak>
                         <div class="status">
-                            <div class="result is-bot" v-show="isCrawler && query && ! processing">
+                            <div class="result is-bot v-cloak--hidden" v-show="isCrawler && query && ! processing">
                                 User agent is a bot
                             </div>
 
-                            <div class="result not-bot" v-show="! isCrawler && query && ! processing">
+                            <div class="result not-bot v-cloak--hidden" v-show="! isCrawler && query && ! processing">
                                 User agent is NOT a bot
                             </div>
                         </div>
 
-                        <div class="contact-wrap">
-                            <div class="contact" v-show="query || isCrawler && ! processing">Think this is incorrect? <a :href="'https://github.com/JayBizzle/Crawler-Detect/issues/new?title=Incorrect agent result&amp;body=' + encodeURIComponent(query)" target="_blank">Let us know</a></div>
+                        <div class="contact-wrap" v-cloak>
+                            <div class="contact v-cloak--hidden" v-show="query && ! processing">Think this is incorrect? <a :href="'https://github.com/JayBizzle/Crawler-Detect/issues/new?title=Incorrect agent result&amp;body=' + encodeURIComponent(query)" target="_blank">Let us know</a></div>
                         </div>
                     </div>
                 </div>
