@@ -33,7 +33,38 @@
             integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
             crossorigin="anonymous"></script>
 
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
         <script type="text/javascript">
+            $(function() {
+                var app = new Vue({
+                    el: '#app',
+                    data: {
+                        query: '{!! \Request::get('q') !!}',
+                        isCrawler: false,
+                        processing: true,
+                    },
+                    methods: {
+                        fetchData: function() {
+                            var self = this;
+                            self.processing = true;
+                            $.ajax({
+                                url: '/',
+                                type: 'post',
+                                dataType: 'json',
+                                data: { q: self.query },
+                                success: function(data) {
+                                    console.log(data.result);
+                                    // This way
+                                    self.isCrawler = data.result;
+                                    self.processing = false;
+                                    history.pushState(null, null, '?q=' + self.query);
+                                }
+                            });
+                        }
+                    }
+                });
+            });
             
             $(function() {
                 var delay = (function(){
@@ -50,33 +81,18 @@
                         'Accept': 'application/json'
                     }
                 });
-
-                $('input').on('keyup', function() {
-                    var agent = $(this).val();
-
-                    delay(function() {
-                        $.ajax({
-                            method: "POST",
-                            url: "/",
-                            data: { q: agent }
-                        })
-                        .done(function( msg ) {
-                            if ( msg.result ) {
-                                $('.is-bot').css('display', 'inline-block');
-                                $('.not-bot').hide();
-                            } else {
-                                $('.is-bot').hide();
-                                $('.not-bot').css('display', 'inline-block');
-                            }
-
-                            $('.contact').show();
-
-                            history.pushState(null, null, '?q=' + agent);
-                        });
-                    }, 1000 );
-                });
             });
 
+        </script>
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-92361874-1', 'auto');
+            ga('send', 'pageview');
         </script>
 
         <!-- Styles -->
@@ -110,7 +126,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 80vh;
             }
 
             .flex-center {
@@ -154,15 +170,22 @@
 
             .result-wrap {
                 margin-top: 40px;
-                height: 59px;
             }
+
+                .result-wrap .status {
+                    height: 61px;
+                }
+
+                .result-wrap  .contact-wrap {
+                    height: 10px;
+                    margin-top: 10px;
+                }
 
                 .result-wrap .contact {
                     display: block;
                     font-size: 11px;
-                    margin-top: 10px;
+                    
                     font-weight: 400;
-                    display: none;
                 }
 
                     .result-wrap  a {
@@ -170,10 +193,10 @@
                     }
 
             .result {
-                display: none;
                 font-weight: 400;
                 border-radius: 5px;
                 padding: 20px;
+                display: inline-block;
             }
 
             .is-bot {
@@ -188,9 +211,9 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div id="app" class="flex-center position-ref full-height">
             <div class="top-right links">
-                <a href="{{ url('/register') }}">GitHub</a>
+                <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank">GitHub</a>
             </div>
 
             <div class="content">
@@ -199,18 +222,22 @@
                 </div>
 
                 <div class="links">
-                    <input type="text" placeholder="Enter user agent" value="{{ \Request::get('q') }}"/>
+                    <input type="text" placeholder="Enter user agent" v-model="query" v-on:keyup="fetchData" />
 
                     <div class="result-wrap">
-                        <div class="result is-bot" @if($result)style="display: inline-block"@endif>
-                            User agent is a bot
+                        <div class="status">
+                            <div class="result is-bot" v-show="isCrawler && query && ! processing">
+                                User agent is a bot
+                            </div>
+
+                            <div class="result not-bot" v-show="! isCrawler && query && ! processing">
+                                User agent is NOT a bot
+                            </div>
                         </div>
 
-                        <div class="result not-bot" @if(! $result)style="display: inline-block"@endif>
-                            User agent is NOT a bot
+                        <div class="contact-wrap">
+                            <div class="contact" v-show="query || isCrawler && ! processing">Think this is incorrect? <a :href="'https://github.com/JayBizzle/Crawler-Detect/issues/new?title=Incorrect agent result&amp;body=' + encodeURIComponent(query)" target="_blank">Let us know</a></div>
                         </div>
-
-                        <div class="contact" @if(\Request::has('q'))style="display: block"@endif>Think this is incorrect? <a href="https://github.com/JayBizzle/Crawler-Detect/issues/new?title=Incorrect agent result&amp;body={!! urlencode(\Request::get('q')) !!}" target="_blank">Let us know</a></div>
                     </div>
                 </div>
             </div>
