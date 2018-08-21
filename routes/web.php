@@ -12,6 +12,10 @@
 */
 
 Route::any('/', function () {
+
+	$installedVersion = collect(json_decode(file_get_contents('../vendor/composer/installed.json')))->where('name', 'jaybizzle/crawler-detect')->first()->version;
+
+
     $detector = new \Jaybizzle\CrawlerDetect\CrawlerDetect;
 
     $result = $detector->isCrawler(request()->get('q'));
@@ -22,5 +26,5 @@ Route::any('/', function () {
 		]);
 	}
 
-	return view('welcome', compact('result'));
+	return view('welcome', compact('result', 'installedVersion'));
 });

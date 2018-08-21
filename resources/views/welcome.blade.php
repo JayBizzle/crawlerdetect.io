@@ -144,7 +144,7 @@
                 text-align: center;
                 font-weight: 100;
                 box-sizing: border-box;
-                margin: 80px 0 40px;
+                margin: 80px 0 20px 0;
             }
 
             input:focus {
@@ -249,6 +249,8 @@
 
                 <div class="links">
                     <input type="text" placeholder="Enter user agent" v-model="query" v-on:keyup="fetchData" />
+
+                    <small>Checking against CrawlerDetect <a href="https://github.com/JayBizzle/Crawler-Detect/releases" style="text-decoration: none; font-weight: 400; color: #48505a" target="_blank">{{$installedVersion}}</a></small>
 
                     <div class="result-wrap" v-cloak>
                         <div class="status">
