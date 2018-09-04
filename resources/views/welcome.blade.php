@@ -63,9 +63,11 @@
                             });
                         }
                     },
-                    mounted: function(){
-                        this.fetchData()
-                    },
+                    mounted: function() {
+                        this.$nextTick(function () {
+                            this.fetchData()
+                        }
+                    }
                 });
             });
             
