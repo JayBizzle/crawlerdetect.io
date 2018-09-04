@@ -66,7 +66,7 @@
                     mounted: function() {
                         this.$nextTick(function () {
                             this.fetchData()
-                        }
+                        })
                     }
                 });
             });
