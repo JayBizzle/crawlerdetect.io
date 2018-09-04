@@ -50,6 +50,10 @@
                             self.processing = true;
                             $.ajax({
                                 url: '/',
+                                headers: { 
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                    'Accept': 'application/json'
+                                },
                                 type: 'post',
                                 dataType: 'json',
                                 data: { q: self.query },
@@ -79,13 +83,6 @@
                         timer = setTimeout(callback, ms);
                     };
                 })();
-
-                $.ajaxSetup({
-                    headers: { 
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Accept': 'application/json'
-                    }
-                });
             });
 
         </script>
