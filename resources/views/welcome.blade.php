@@ -58,8 +58,6 @@
                                 dataType: 'json',
                                 data: { q: self.query },
                                 success: function(data) {
-                                    console.log(data.result);
-                                    // This way
                                     self.isCrawler = data.result;
                                     self.processing = false;
                                     history.pushState(null, null, '?q=' + self.query);
