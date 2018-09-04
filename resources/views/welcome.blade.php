@@ -62,7 +62,10 @@
                                 }
                             });
                         }
-                    }
+                    },
+                    mounted: function(){
+                        this.fetchData()
+                    },
                 });
             });
             
