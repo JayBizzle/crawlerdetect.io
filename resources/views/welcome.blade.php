@@ -17,6 +17,27 @@
             ga('create', 'UA-92361874-1', 'auto');
             ga('send', 'pageview');
         </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function(event) {
+                if (window.location.href.indexOf('?q=') != -1) {
+                    var val = window.location.href.slice(window.location.href.indexOf('?') + 3);
+                    document.getElementById('agent').value = val;
+                    
+                    setTimeout(function() {
+                        window.livewire.emit('result', val);
+                    }, 1);
+                }
+
+                window.livewire.beforeDomUpdate(() => {
+                    //
+                });
+
+                window.livewire.afterDomUpdate(() => {
+                    history.pushState(null, null, '?q=' + document.getElementById('agent').value);
+                });
+            });
+        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
