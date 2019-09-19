@@ -22,7 +22,7 @@
             document.addEventListener("DOMContentLoaded", function(event) {
                 if (window.location.href.indexOf('?q=') != -1) {
                     var val = window.location.href.slice(window.location.href.indexOf('?') + 3);
-                    document.getElementById('agent').value = val;
+                    document.getElementById('agent').value = decodeURIComponent(val);
                     
                     setTimeout(function() {
                         window.livewire.emit('result', val);
