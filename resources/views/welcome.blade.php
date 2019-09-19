@@ -7,6 +7,7 @@
         <title>CrawlerDetect - the web crawler detection library</title>
 
         <link href="{{ mix('/css/app.css') }}" rel="stylesheet" type="text/css">
+        <script src="{{ mix('/js/app.js') }}"></script>
 
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -18,26 +19,7 @@
             ga('send', 'pageview');
         </script>
 
-        <script>
-            document.addEventListener("DOMContentLoaded", function(event) {
-                if (window.location.href.indexOf('?q=') != -1) {
-                    var val = window.location.href.slice(window.location.href.indexOf('?') + 3);
-                    document.getElementById('agent').value = decodeURIComponent(val);
-                    
-                    setTimeout(function() {
-                        window.livewire.emit('result', val);
-                    }, 1);
-                }
 
-                window.livewire.beforeDomUpdate(() => {
-                    //
-                });
-
-                window.livewire.afterDomUpdate(() => {
-                    history.pushState(null, null, '?q=' + document.getElementById('agent').value);
-                });
-            });
-        </script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
