@@ -11,12 +11,12 @@
             "version": "v0.2.10",
             "source": {
                 "type": "git",
-                "url": "https://github.com/calebporzio/livewire.git",
+                "url": "https://github.com/livewire/livewire.git",
                 "reference": "10c158cc8f8dc211a572f506ca9e4cc117d4a467"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/calebporzio/livewire/zipball/10c158cc8f8dc211a572f506ca9e4cc117d4a467",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/10c158cc8f8dc211a572f506ca9e4cc117d4a467",
                 "reference": "10c158cc8f8dc211a572f506ca9e4cc117d4a467",
                 "shasum": ""
             },
