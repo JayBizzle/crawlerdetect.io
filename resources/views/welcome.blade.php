@@ -24,6 +24,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div class="top-right links">
+                <a href="https://packagist.org/packages/jaybizzle/crawler-detect"><img src="https://img.shields.io/packagist/dm/JayBizzle/Crawler-Detect.svg?style=flat-square" /></a>
                 <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank">GitHub</a>
             </div>
             <div class="content">
