@@ -27,7 +27,7 @@
                 <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank">GitHub</a>
             </div>
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title">
                     <img src="https://cloud.githubusercontent.com/assets/340752/20685655/251a6466-b5ad-11e6-9509-24d12f24a042.png" style="width: 128px; height: 128px; vertical-align: middle; margin-bottom: 20px;" /><br />CrawlerDetect
                     <br />
                     <a href="https://packagist.org/packages/jaybizzle/crawler-detect"><img src="https://img.shields.io/packagist/dm/JayBizzle/Crawler-Detect.svg?style=flat-square" /></a>
