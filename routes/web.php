@@ -16,3 +16,7 @@ Route::get('/', function () {
         'installedVersion' => collect(json_decode(file_get_contents('../vendor/composer/installed.json')))->where('name', 'jaybizzle/crawler-detect')->first()->version,
     ]);
 });
+
+Route::get('/test', function () {
+    dd(request()->ip());
+});
