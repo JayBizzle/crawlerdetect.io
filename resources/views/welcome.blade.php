@@ -35,7 +35,7 @@
         
                 @livewire('bot-check')
 
-                <small>Checking against CrawlerDetect <a href="https://github.com/JayBizzle/Crawler-Detect/releases" style="text-decoration: none; font-weight: 400; color: #48505a" target="_blank">{{$installedVersion}}</a></small>
+                <small>- Checking against CrawlerDetect <a href="https://github.com/JayBizzle/Crawler-Detect/releases" style="text-decoration: none; font-weight: 400; color: #48505a" target="_blank">{{$installedVersion}}</a></small>
 
                 <div class="result-wrap">
 
