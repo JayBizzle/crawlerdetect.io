@@ -12,6 +12,11 @@
         monospace;
 }
 
+/* Offset scroll targets for sticky nav */
+html {
+    scroll-padding-top: 4rem;
+}
+
 /* Animated connecting lines */
 .line-v {
     width: 1px;

@@ -517,6 +517,14 @@
             document.querySelectorAll('.line-v, .line-h, .line-node, .line-node-glow, .section-reveal, .stagger-children').forEach(el => {
                 observer.observe(el);
             });
+
+            // Auto-scroll to the demo section if ?ua= is present
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('ua')) {
+                setTimeout(() => {
+                    document.getElementById('try-it')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+            }
         });
 
         function heroDemo() {
