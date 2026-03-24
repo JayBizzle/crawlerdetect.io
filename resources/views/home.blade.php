@@ -423,6 +423,59 @@
         </section>
         @endif
 
+        {{-- Releases Section --}}
+        @if(count($releases))
+        <div class="max-w-5xl mx-auto flex justify-center">
+            <div class="line-v h-10" data-delay="0"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-0">
+            <div class="line-h flex-1" data-delay="200"></div>
+            <div class="line-node mx-0" data-delay="600"></div>
+            <div class="line-h flex-1 line-h-right" data-delay="200"></div>
+        </div>
+
+        <section class="max-w-5xl mx-auto px-6 pt-8 pb-10 section-reveal">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Recent releases</h2>
+                <p class="text-[15px] text-white/40 mt-3 leading-[1.7]">Actively maintained with {{ count($releases) > 0 ? '169+' : '' }} releases and counting.</p>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-4">
+                @foreach($releases as $release)
+                    <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl overflow-hidden">
+                        <div class="px-5 py-4 flex items-center justify-between border-b border-white/[0.04]">
+                            <div class="flex items-center gap-3">
+                                <span class="text-[14px] font-semibold text-white tracking-[-0.01em]">{{ $release['tag'] }}</span>
+                                <span class="text-[12px] text-white/25">{{ \Carbon\Carbon::parse($release['date'])->format('M j, Y') }}</span>
+                            </div>
+                            <a href="{{ $release['url'] }}" target="_blank" rel="noopener" class="text-[12px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
+                                View release &rarr;
+                            </a>
+                        </div>
+                        @if(count($release['changes']))
+                            <ul class="px-5 py-3.5 space-y-1.5">
+                                @foreach($release['changes'] as $change)
+                                    <li class="flex items-start gap-2.5 text-[13px] text-white/40 leading-[1.6]">
+                                        <span class="text-emerald-400/40 mt-[7px] flex-shrink-0">
+                                            <svg class="w-2 h-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
+                                        </span>
+                                        {{ $change }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
+
+            <div class="text-center mt-6">
+                <a href="https://github.com/JayBizzle/Crawler-Detect/releases" target="_blank" rel="noopener" class="text-[13px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
+                    View all releases &rarr;
+                </a>
+            </div>
+        </section>
+        @endif
+
         {{-- Footer --}}
         <footer class="footer-border mt-4">
             <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">

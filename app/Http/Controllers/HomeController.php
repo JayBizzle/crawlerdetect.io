@@ -62,9 +62,43 @@ class HomeController extends Controller
             return [];
         });
 
+        $releases = Cache::remember('github_releases', 3600, function () {
+            try {
+                $response = Http::timeout(5)
+                    ->withHeaders(['Accept' => 'application/vnd.github.v3+json'])
+                    ->get('https://api.github.com/repos/JayBizzle/Crawler-Detect/releases', [
+                        'per_page' => 3,
+                    ]);
+
+                if ($response->successful()) {
+                    return collect($response->json())->map(function ($r) {
+                        // Extract just the "What's Changed" bullet points from the body
+                        $body = $r['body'] ?? '';
+                        $changes = [];
+
+                        if (preg_match_all('/^\* (.+?) by @/m', $body, $matches)) {
+                            $changes = array_slice($matches[1], 0, 5);
+                        }
+
+                        return [
+                            'tag' => $r['tag_name'],
+                            'url' => $r['html_url'],
+                            'date' => $r['published_at'],
+                            'changes' => $changes,
+                        ];
+                    })->all();
+                }
+            } catch (\Exception $e) {
+                // Fallback
+            }
+
+            return [];
+        });
+
         return view('home', [
             'stats' => $stats,
             'contributors' => $contributors,
+            'releases' => $releases,
         ]);
     }
 }
