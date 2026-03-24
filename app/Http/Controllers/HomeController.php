@@ -39,6 +39,32 @@ class HomeController extends Controller
             ];
         });
 
-        return view('home', ['stats' => $stats]);
+        $contributors = Cache::remember('github_contributors', 3600, function () {
+            try {
+                $response = Http::timeout(5)
+                    ->withHeaders(['Accept' => 'application/vnd.github.v3+json'])
+                    ->get('https://api.github.com/repos/JayBizzle/Crawler-Detect/contributors', [
+                        'per_page' => 100,
+                    ]);
+
+                if ($response->successful()) {
+                    return collect($response->json())->map(fn ($c) => [
+                        'login' => $c['login'],
+                        'avatar' => $c['avatar_url'],
+                        'url' => $c['html_url'],
+                        'contributions' => $c['contributions'],
+                    ])->all();
+                }
+            } catch (\Exception $e) {
+                // Fallback
+            }
+
+            return [];
+        });
+
+        return view('home', [
+            'stats' => $stats,
+            'contributors' => $contributors,
+        ]);
     }
 }

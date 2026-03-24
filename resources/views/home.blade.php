@@ -378,6 +378,51 @@
             </div>
         </section>
 
+        {{-- Connector: Languages → Contributors --}}
+        @if(count($contributors))
+        <div class="max-w-5xl mx-auto flex justify-center">
+            <div class="line-v h-10" data-delay="0"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-6 flex items-center gap-0">
+            <div class="line-h flex-1" data-delay="200"></div>
+            <div class="line-node mx-0" data-delay="600"></div>
+            <div class="line-h flex-1 line-h-right" data-delay="200"></div>
+        </div>
+
+        {{-- Contributors Section --}}
+        <section class="max-w-5xl mx-auto px-6 pt-8 pb-10 section-reveal">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Built by the community</h2>
+                <p class="text-[15px] text-white/40 mt-3 leading-[1.7] max-w-md mx-auto">CrawlerDetect wouldn't exist without its contributors. Thank you to every one of the {{ count($contributors) }} people who have helped shape this project.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-1">
+                @foreach($contributors as $contributor)
+                    <a
+                        href="{{ $contributor['url'] }}"
+                        target="_blank"
+                        rel="noopener"
+                        title="{{ $contributor['login'] }} &mdash; {{ $contributor['contributions'] }} contribution{{ $contributor['contributions'] !== 1 ? 's' : '' }}"
+                        class="relative group"
+                    >
+                        <img
+                            src="{{ $contributor['avatar'] }}&s=64"
+                            alt="{{ $contributor['login'] }}"
+                            width="36"
+                            height="36"
+                            loading="lazy"
+                            class="rounded-lg grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                        />
+                    </a>
+                @endforeach
+            </div>
+            <div class="text-center mt-6">
+                <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank" rel="noopener" class="text-[13px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
+                    Become a contributor &rarr;
+                </a>
+            </div>
+        </section>
+        @endif
+
         {{-- Footer --}}
         <footer class="footer-border mt-4">
             <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
