@@ -27,7 +27,7 @@
         <nav class="sticky top-0 z-50 border-b border-white/[0.06] bg-zinc-950/70 backdrop-blur-xl">
             <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
                 <a href="/" class="flex items-center gap-2.5 group">
-                    <div class="w-7 h-7 bg-emerald-500 rounded-md flex items-center justify-center">
+                    <div class="w-7 h-7 bg-emerald-500 rounded-md flex items-center justify-center transition-shadow duration-300 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.4)]">
                         <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
                         </svg>
@@ -48,8 +48,8 @@
 
         {{-- Hero Section --}}
         <section class="max-w-6xl mx-auto px-6 pt-28 sm:pt-36 pb-10 section-reveal">
-            {{-- Badge --}}
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[13px] font-medium mb-8">
+            {{-- Badge with shimmer --}}
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[13px] font-medium mb-8 badge-shimmer">
                 <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
                 v1.3.7 &mdash; Actively maintained
             </div>
@@ -67,10 +67,10 @@
                     </p>
 
                     <div class="mt-8 flex flex-wrap gap-3">
-                        <a href="#try-it" class="bg-emerald-500 hover:bg-emerald-400 text-black text-[15px] font-semibold py-3 px-7 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 tracking-[-0.01em]">
+                        <a href="#try-it" class="bg-emerald-500 hover:bg-emerald-400 text-black text-[15px] font-semibold py-3 px-7 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-emerald-500/20 hover:-translate-y-px tracking-[-0.01em]">
                             Try it live
                         </a>
-                        <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank" rel="noopener" class="border border-white/10 hover:border-white/20 text-white/80 text-[15px] font-medium py-3 px-7 rounded-xl transition-all duration-300 flex items-center gap-2.5 tracking-[-0.01em]">
+                        <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank" rel="noopener" class="border border-white/10 hover:border-white/20 text-white/80 text-[15px] font-medium py-3 px-7 rounded-xl transition-all duration-300 hover:-translate-y-px flex items-center gap-2.5 tracking-[-0.01em]">
                             <svg class="w-[18px] h-[18px] text-white/50" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                             View on GitHub
                         </a>
@@ -84,16 +84,15 @@
                         {{-- Terminal title bar --}}
                         <div class="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06]">
                             <div class="flex gap-1.5">
-                                <div class="w-2.5 h-2.5 rounded-full bg-white/10"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-white/10"></div>
-                                <div class="w-2.5 h-2.5 rounded-full bg-white/10"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#ff5f57]/60"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#febc2e]/60"></div>
+                                <div class="w-2.5 h-2.5 rounded-full bg-[#28c840]/60"></div>
                             </div>
                             <span class="text-[11px] text-white/20 font-mono ml-2">php interactive shell</span>
                         </div>
 
                         {{-- Terminal content --}}
                         <div class="p-5 font-mono text-[13px] leading-[1.8] min-h-[240px]">
-                            {{-- Line 1: Create instance --}}
                             <div class="flex">
                                 <span class="text-emerald-400/50 select-none mr-2">&gt;</span>
                                 <span>
@@ -104,20 +103,17 @@
                                 </span>
                             </div>
 
-                            {{-- Line 2: Check bot UA --}}
                             <div class="mt-3 flex items-baseline" x-show="step >= 1" x-transition.opacity.duration.400ms>
                                 <span class="text-emerald-400/50 select-none mr-2 flex-shrink-0">&gt;</span>
                                 <span class="truncate min-w-0"><span class="text-emerald-400">$detect</span><span class="text-white/30">-></span><span class="text-teal-300">isCrawler</span><span class="text-white/30">(</span><span class="text-amber-300/80">'<span x-text="currentUA"></span>'</span><span class="text-white/30">);</span></span>
                             </div>
 
-                            {{-- Line 3: Result --}}
                             <div class="mt-2" x-show="step >= 2" x-transition.opacity.duration.400ms>
                                 <span class="text-white/20 select-none">= </span>
                                 <span class="font-medium" :class="currentIsBot ? 'text-amber-400' : 'text-emerald-400'" x-text="currentIsBot ? 'true' : 'false'"></span>
                                 <span class="text-white/15 ml-3" x-text="currentIsBot ? '// Bot detected' : '// Human visitor'"></span>
                             </div>
 
-                            {{-- Line 4: Get match --}}
                             <div class="mt-3" x-show="step >= 3 && currentIsBot" x-transition.opacity.duration.400ms>
                                 <div class="flex">
                                     <span class="text-emerald-400/50 select-none mr-2">&gt;</span>
@@ -131,7 +127,6 @@
                                 </div>
                             </div>
 
-                            {{-- Blinking cursor --}}
                             <div class="mt-3 flex" x-show="step >= 4" x-transition.opacity.duration.400ms>
                                 <span class="text-emerald-400/50 select-none mr-2">&gt;</span>
                                 <span class="w-2 h-[18px] bg-emerald-400/60 animate-pulse"></span>
@@ -150,23 +145,35 @@
         </div>
 
         {{-- Stats Section --}}
-        <section class="max-w-5xl mx-auto px-6 pt-8 pb-4 section-reveal">
+        <section class="max-w-5xl mx-auto px-6 pt-14 pb-6 section-reveal">
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 stagger-children">
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center">
-                    <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['total'] / 1000000, 0) }}M<span class="text-emerald-400">+</span></div>
-                    <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Installs</div>
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+                    <div class="relative">
+                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['total'] / 1000000, 0) }}M<span class="text-emerald-400">+</span></div>
+                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Total installs</div>
+                    </div>
                 </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center">
-                    <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['monthly'] / 1000, 0) }}K</div>
-                    <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Monthly installs</div>
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+                    <div class="relative">
+                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['monthly'] / 1000000, 1) }}M</div>
+                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Monthly installs</div>
+                    </div>
                 </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center">
-                    <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['stars']) }}</div>
-                    <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">GitHub stars</div>
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+                    <div class="relative">
+                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['stars']) }}</div>
+                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">GitHub stars</div>
+                    </div>
                 </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center">
-                    <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['forks']) }}</div>
-                    <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Forks</div>
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
+                    <div class="relative">
+                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['forks']) }}</div>
+                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Forks</div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -188,8 +195,9 @@
                 <p class="text-[15px] text-white/40 mt-3 max-w-md mx-auto leading-[1.7]">Not another SaaS dashboard. A single PHP class that does one thing and does it well.</p>
             </div>
             <div class="grid sm:grid-cols-3 gap-5 stagger-children">
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 hover:border-emerald-500/20 transition-all duration-300 group">
-                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-emerald-500/15 transition-colors duration-300">
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 relative overflow-hidden">
+                    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
+                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5">
                         <svg class="w-[18px] h-[18px] text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
                         </svg>
@@ -197,8 +205,9 @@
                     <h3 class="text-[15px] font-semibold tracking-[-0.01em] mb-2">Zero network overhead</h3>
                     <p class="text-[14px] text-white/40 leading-[1.7]">Pure regex matching against a local signature database. No API calls, no latency penalty, no third-party dependency.</p>
                 </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 hover:border-emerald-500/20 transition-all duration-300 group">
-                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-emerald-500/15 transition-colors duration-300">
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 relative overflow-hidden">
+                    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
+                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5">
                         <svg class="w-[18px] h-[18px] text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
                         </svg>
@@ -206,8 +215,9 @@
                     <h3 class="text-[15px] font-semibold tracking-[-0.01em] mb-2">Thousands of signatures</h3>
                     <p class="text-[14px] text-white/40 leading-[1.7]">Community-maintained list of known bots, crawlers, and spiders. Updated regularly with new signatures as they appear in the wild.</p>
                 </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 hover:border-emerald-500/20 transition-all duration-300 group">
-                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5 group-hover:bg-emerald-500/15 transition-colors duration-300">
+                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-7 relative overflow-hidden">
+                    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent"></div>
+                    <div class="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center mb-5">
                         <svg class="w-[18px] h-[18px] text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
                         </svg>
@@ -273,7 +283,7 @@
         <section id="install" class="max-w-5xl mx-auto px-6 pb-6 section-reveal">
             <div class="max-w-2xl mx-auto">
                 <div class="text-center mb-10">
-                    <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Up and running in seconds</h2>
+                        <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Up and running in seconds</h2>
                     <p class="text-[15px] text-white/40 mt-3 leading-[1.7]">One Composer command. No config files, no service providers, no setup.</p>
                 </div>
 
@@ -281,8 +291,8 @@
                     {{-- Install --}}
                     <div>
                         <div class="text-[11px] text-white/25 uppercase tracking-[0.08em] mb-2.5 font-medium">Install</div>
-                        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-4 font-mono text-[13px]" x-data="{ copied: false }">
-                            <div class="flex items-center justify-between">
+                        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl overflow-hidden font-mono text-[13px]" x-data="{ copied: false }">
+                            <div class="flex items-center justify-between px-5 py-4 border-l-2 border-emerald-500/40">
                                 <div>
                                     <span class="text-white/25 select-none">$ </span><code class="text-emerald-400">composer require jaybizzle/crawler-detect</code>
                                 </div>
@@ -305,7 +315,9 @@
                     {{-- Usage --}}
                     <div>
                         <div class="text-[11px] text-white/25 uppercase tracking-[0.08em] mb-2.5 font-medium">Usage</div>
-                        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl px-5 py-5 font-mono text-[13px] leading-[1.75] overflow-x-auto">
+                        <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl overflow-hidden relative">
+                            <div class="absolute top-3 right-4 text-[10px] text-white/15 uppercase tracking-[0.1em] font-medium select-none">PHP</div>
+                            <div class="px-5 py-5 font-mono text-[13px] leading-[1.75] overflow-x-auto">
 <pre><span class="text-emerald-400/70">use</span> <span class="text-white/50">Jaybizzle\CrawlerDetect\</span><span class="text-teal-300">CrawlerDetect</span>;
 
 <span class="text-white/25">// Check the current visitor's user-agent</span>
@@ -320,6 +332,7 @@
 
 <span class="text-white/25">// Get the name of the matched bot</span>
 <span class="text-emerald-400">$detect</span>-><span class="text-teal-300">getMatches</span>(); <span class="text-white/25">// "Googlebot"</span></pre>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -366,7 +379,7 @@
         </section>
 
         {{-- Footer --}}
-        <footer class="border-t border-white/[0.06] mt-4">
+        <footer class="footer-border mt-4">
             <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
                 <div class="text-[13px] text-white/25 tracking-wide">
                     Created by <a href="https://github.com/JayBizzle" target="_blank" rel="noopener" class="text-emerald-400/70 hover:text-emerald-400 transition-colors duration-200">Mark Beech</a>
@@ -374,6 +387,11 @@
                     MIT License
                 </div>
                 <div class="flex items-center gap-5">
+                    <a href="#" class="text-[13px] text-white/25 hover:text-white/50 transition-colors duration-200 flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
+                        Top
+                    </a>
+                    <span class="text-white/10">|</span>
                     <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank" rel="noopener" class="text-[13px] text-white/25 hover:text-white/50 transition-colors duration-200">GitHub</a>
                     <a href="https://packagist.org/packages/jaybizzle/crawler-detect" target="_blank" rel="noopener" class="text-[13px] text-white/25 hover:text-white/50 transition-colors duration-200">Packagist</a>
                 </div>
@@ -433,10 +451,7 @@
                     setTimeout(() => { this.clearAndNext(); }, 5000);
                 },
                 clearAndNext() {
-                    // Hide everything first
                     this.step = 0;
-
-                    // Wait for fade-out to finish, then swap data and start next
                     setTimeout(() => {
                         this.index = (this.index + 1) % this.examples.length;
                         this.showExample();
