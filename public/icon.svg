@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Body -->
+  <ellipse cx="16" cy="18" rx="5" ry="6.5" fill="#10b981"/>
+  <!-- Head -->
+  <circle cx="16" cy="9.5" r="3" fill="#10b981"/>
+  <!-- Legs with joints - left side -->
+  <path d="M11.5 13.5 L7 11 L3 6" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11 17.5 L6 16.5 L2 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M11.5 22 L7 24 L3 28" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Legs with joints - right side -->
+  <path d="M20.5 13.5 L25 11 L29 6" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21 17.5 L26 16.5 L30 15" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20.5 22 L25 24 L29 28" stroke="#10b981" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

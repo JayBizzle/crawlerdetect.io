@@ -28,8 +28,15 @@
             <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
                 <a href="/" class="flex items-center gap-2.5 group">
                     <div class="w-7 h-7 bg-emerald-500 rounded-md flex items-center justify-center transition-shadow duration-300 group-hover:shadow-[0_0_12px_rgba(16,185,129,0.4)]">
-                        <svg class="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        <svg class="w-4 h-4" viewBox="0 0 32 32" fill="none">
+                            <ellipse cx="16" cy="18" rx="5" ry="6.5" fill="#09090b"/>
+                            <circle cx="16" cy="9.5" r="3" fill="#09090b"/>
+                            <path d="M11.5 13.5 L7 11 L3 6" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 17.5 L6 16.5 L2 15" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.5 22 L7 24 L3 28" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.5 13.5 L25 11 L29 6" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M21 17.5 L26 16.5 L30 15" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20.5 22 L25 24 L29 28" stroke="#09090b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <span class="font-bold text-[15px] tracking-[-0.01em]">CrawlerDetect</span>
