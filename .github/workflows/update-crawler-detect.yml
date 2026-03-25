@@ -1,0 +1,41 @@
+name: Update CrawlerDetect
+
+on:
+  schedule:
+    # Check every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - name: Update jaybizzle/crawler-detect
+        run: composer update jaybizzle/crawler-detect --no-interaction --no-progress
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet composer.lock; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          VERSION=$(composer show jaybizzle/crawler-detect | grep 'versions' | awk '{print $NF}')
+          git add composer.lock
+          git commit -m "Update jaybizzle/crawler-detect to ${VERSION}"
+          git push
