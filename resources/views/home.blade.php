@@ -6,6 +6,8 @@
     <title>CrawlerDetect &mdash; The PHP Standard for Bot Detection</title>
     <meta name="description" content="Identify bots, crawlers, and spiders from their user-agent string. Three methods. Zero dependencies. Trusted across 96 million installs.">
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700,800&display=swap" rel="stylesheet" />
     <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,500&display=swap" rel="stylesheet" />
