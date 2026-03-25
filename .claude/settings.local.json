@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s -L \"https://github.com/JayBizzle/Crawler-Detect\")",
+      "Bash(curl -s \"https://api.github.com/repos/JayBizzle/Crawler-Detect\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(f''''Stars: {d[\"\"stargazers_count\"\"]}''''\\); print\\(f''''Forks: {d[\"\"forks_count\"\"]}''''\\); print\\(f''''Open Issues: {d[\"\"open_issues_count\"\"]}''''\\); print\\(f''''Watchers: {d[\"\"subscribers_count\"\"]}''''\\); print\\(f''''Description: {d[\"\"description\"\"]}''''\\)\")",
+      "Bash(composer require:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)"
+    ]
+  }
+}

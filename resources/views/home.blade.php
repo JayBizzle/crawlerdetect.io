@@ -55,7 +55,7 @@
             </div>
 
             {{-- Heading + Terminal side by side --}}
-            <div class="flex flex-col lg:flex-row lg:items-end lg:gap-14">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:gap-14">
                 {{-- Left: Heading, subtitle, CTAs --}}
                 <div class="lg:flex-1 min-w-0">
                     <h1 class="text-[2.75rem] sm:text-[3.5rem] lg:text-[4rem] font-extrabold tracking-[-0.04em] leading-[1.08]">
