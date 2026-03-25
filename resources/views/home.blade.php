@@ -155,36 +155,7 @@
 
         {{-- Stats Section --}}
         <section class="max-w-5xl mx-auto px-6 pt-14 pb-6 section-reveal">
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 stagger-children">
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-                    <div class="relative">
-                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['total'] / 1000000, 0) }}M<span class="text-emerald-400">+</span></div>
-                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Total installs</div>
-                    </div>
-                </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-                    <div class="relative">
-                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['monthly'] / 1000000, 1) }}M</div>
-                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Monthly installs</div>
-                    </div>
-                </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-                    <div class="relative">
-                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['stars']) }}</div>
-                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">GitHub stars</div>
-                    </div>
-                </div>
-                <div class="bg-white/[0.03] border border-white/[0.06] rounded-2xl p-6 sm:p-7 text-center relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none"></div>
-                    <div class="relative">
-                        <div class="text-3xl sm:text-4xl font-extrabold tracking-[-0.03em] text-white">{{ number_format($stats['forks']) }}</div>
-                        <div class="text-[13px] text-white/35 mt-1.5 tracking-wide">Forks</div>
-                    </div>
-                </div>
-            </div>
+            <livewire:stats />
         </section>
 
         {{-- Connector: Stats → Features --}}
@@ -387,103 +358,11 @@
             </div>
         </section>
 
-        {{-- Connector: Languages → Contributors --}}
-        @if(count($contributors))
-        <div class="max-w-5xl mx-auto flex justify-center">
-            <div class="line-v h-10" data-delay="0"></div>
-        </div>
-        <div class="max-w-5xl mx-auto px-6 flex items-center gap-0">
-            <div class="line-h flex-1" data-delay="200"></div>
-            <div class="line-node mx-0" data-delay="600"></div>
-            <div class="line-h flex-1 line-h-right" data-delay="200"></div>
-        </div>
+        {{-- Contributors (deferred) --}}
+        <livewire:contributors />
 
-        {{-- Contributors Section --}}
-        <section class="max-w-5xl mx-auto px-6 pt-8 pb-10 section-reveal">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Built by the community</h2>
-                <p class="text-[15px] text-white/40 mt-3 leading-[1.7] max-w-md mx-auto">CrawlerDetect wouldn't exist without its contributors. Thank you to every one of the {{ count($contributors) }} people who have helped shape this project.</p>
-            </div>
-            <div class="flex flex-wrap justify-center gap-1">
-                @foreach($contributors as $contributor)
-                    <a
-                        href="{{ $contributor['url'] }}"
-                        target="_blank"
-                        rel="noopener"
-                        title="{{ $contributor['login'] }} &mdash; {{ $contributor['contributions'] }} contribution{{ $contributor['contributions'] !== 1 ? 's' : '' }}"
-                        class="relative group"
-                    >
-                        <img
-                            src="{{ $contributor['avatar'] }}&s=64"
-                            alt="{{ $contributor['login'] }}"
-                            width="36"
-                            height="36"
-                            loading="lazy"
-                            class="rounded-lg grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
-                        />
-                    </a>
-                @endforeach
-            </div>
-            <div class="text-center mt-6">
-                <a href="https://github.com/JayBizzle/Crawler-Detect" target="_blank" rel="noopener" class="text-[13px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
-                    Become a contributor &rarr;
-                </a>
-            </div>
-        </section>
-        @endif
-
-        {{-- Releases Section --}}
-        @if(count($releases))
-        <div class="max-w-5xl mx-auto flex justify-center">
-            <div class="line-v h-10" data-delay="0"></div>
-        </div>
-        <div class="max-w-5xl mx-auto px-6 flex items-center gap-0">
-            <div class="line-h flex-1" data-delay="200"></div>
-            <div class="line-node mx-0" data-delay="600"></div>
-            <div class="line-h flex-1 line-h-right" data-delay="200"></div>
-        </div>
-
-        <section class="max-w-5xl mx-auto px-6 pt-8 pb-10 section-reveal">
-            <div class="text-center mb-10">
-                <h2 class="text-2xl sm:text-[1.75rem] font-bold tracking-[-0.025em]">Recent releases</h2>
-                <p class="text-[15px] text-white/40 mt-3 leading-[1.7]">Actively maintained with {{ count($releases) > 0 ? '169+' : '' }} releases and counting.</p>
-            </div>
-
-            <div class="max-w-2xl mx-auto space-y-4">
-                @foreach($releases as $release)
-                    <div class="bg-white/[0.03] border border-white/[0.06] rounded-xl overflow-hidden">
-                        <div class="px-5 py-4 flex items-center justify-between border-b border-white/[0.04]">
-                            <div class="flex items-center gap-3">
-                                <span class="text-[14px] font-semibold text-white tracking-[-0.01em]">{{ $release['tag'] }}</span>
-                                <span class="text-[12px] text-white/25">{{ \Carbon\Carbon::parse($release['date'])->format('M j, Y') }}</span>
-                            </div>
-                            <a href="{{ $release['url'] }}" target="_blank" rel="noopener" class="text-[12px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
-                                View release &rarr;
-                            </a>
-                        </div>
-                        @if(count($release['changes']))
-                            <ul class="px-5 py-3.5 space-y-1.5">
-                                @foreach($release['changes'] as $change)
-                                    <li class="flex items-start gap-2.5 text-[13px] text-white/40 leading-[1.6]">
-                                        <span class="text-emerald-400/40 mt-[7px] flex-shrink-0">
-                                            <svg class="w-2 h-2" fill="currentColor" viewBox="0 0 8 8"><circle cx="4" cy="4" r="3"/></svg>
-                                        </span>
-                                        {{ $change }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                    </div>
-                @endforeach
-            </div>
-
-            <div class="text-center mt-6">
-                <a href="https://github.com/JayBizzle/Crawler-Detect/releases" target="_blank" rel="noopener" class="text-[13px] text-emerald-400/60 hover:text-emerald-400 transition-colors duration-200">
-                    View all releases &rarr;
-                </a>
-            </div>
-        </section>
-        @endif
+        {{-- Releases (deferred) --}}
+        <livewire:releases />
 
         {{-- Footer --}}
         <footer class="footer-border mt-4">
