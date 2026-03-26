@@ -3,6 +3,7 @@
 use Livewire\Component;
 use Jaybizzle\CrawlerDetect\CrawlerDetect;
 use Livewire\Attributes\Validate;
+use Illuminate\Support\Facades\RateLimiter;
 
 new class extends Component
 {
@@ -11,6 +12,7 @@ new class extends Component
     public ?bool $isCrawler = null;
     public string $matchedName = '';
     public bool $analyzed = false;
+    public string $rateLimitError = '';
 
     public function mount(): void
     {
@@ -24,7 +26,18 @@ new class extends Component
 
     public function analyze(): void
     {
+        $this->rateLimitError = '';
         $this->validate();
+
+        $key = 'crawler-check:' . request()->ip();
+
+        if (RateLimiter::tooManyAttempts($key, 30)) {
+            $seconds = RateLimiter::availableIn($key);
+            $this->rateLimitError = "Too many requests. Please try again in {$seconds} seconds.";
+            return;
+        }
+
+        RateLimiter::hit($key, 60);
 
         $detector = new CrawlerDetect();
         $this->isCrawler = $detector->isCrawler($this->userAgent);
@@ -107,6 +120,9 @@ new class extends Component
         @error('userAgent')
             <p class="text-red-400/80 text-[13px] mt-2">{{ $message }}</p>
         @enderror
+        @if($rateLimitError)
+            <p class="text-amber-400/80 text-[13px] mt-2">{{ $rateLimitError }}</p>
+        @endif
     </form>
 
     @if($analyzed)
