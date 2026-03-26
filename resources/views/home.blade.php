@@ -6,6 +6,22 @@
     <title>CrawlerDetect &mdash; The PHP Standard for Bot Detection</title>
     <meta name="description" content="Identify bots, crawlers, and spiders from their user-agent string. Three methods. Zero dependencies. Trusted across 96 million installs.">
 
+    {{-- Open Graph --}}
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CrawlerDetect &mdash; The PHP Standard for Bot Detection">
+    <meta property="og:description" content="Identify bots, crawlers, and spiders from their user-agent string. Three methods. Zero dependencies. Trusted across 96 million installs.">
+    <meta property="og:image" content="{{ url('/og-image.png') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:site_name" content="CrawlerDetect">
+
+    {{-- Twitter Card --}}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CrawlerDetect &mdash; The PHP Standard for Bot Detection">
+    <meta name="twitter:description" content="Identify bots, crawlers, and spiders from their user-agent string. Three methods. Zero dependencies. Trusted across 96 million installs.">
+    <meta name="twitter:image" content="{{ url('/og-image.png') }}">
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
     <link rel="preconnect" href="https://fonts.bunny.net">
