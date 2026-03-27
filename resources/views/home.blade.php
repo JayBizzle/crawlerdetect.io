@@ -76,7 +76,7 @@
             {{-- Badge with shimmer --}}
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[13px] font-medium mb-8 badge-shimmer">
                 <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse"></span>
-                v1.3.7 &mdash; Actively maintained
+                v{{ \Composer\InstalledVersions::getPrettyVersion('jaybizzle/crawler-detect') }} &mdash; Actively maintained
             </div>
 
             {{-- Heading + Terminal side by side --}}
