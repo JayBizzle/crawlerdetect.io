@@ -1055,16 +1055,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.3.10",
+            "version": "v1.3.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "efbfff663d8764d627c0cef046a018ff1a880212"
+                "reference": "484792759de89fe94ea6a192065ea7cd99f1eaa2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/efbfff663d8764d627c0cef046a018ff1a880212",
-                "reference": "efbfff663d8764d627c0cef046a018ff1a880212",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/484792759de89fe94ea6a192065ea7cd99f1eaa2",
+                "reference": "484792759de89fe94ea6a192065ea7cd99f1eaa2",
                 "shasum": ""
             },
             "require": {
@@ -1101,9 +1101,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JayBizzle/Crawler-Detect/issues",
-                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.3.10"
+                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.3.11"
             },
-            "time": "2026-05-10T09:05:26+00:00"
+            "time": "2026-05-10T14:08:06+00:00"
         },
         {
             "name": "laravel/framework",
