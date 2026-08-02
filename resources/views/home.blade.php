@@ -29,6 +29,8 @@
     <link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,500&display=swap" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script defer src="https://analytics.crawlerdetect.io/em.js" data-domain="crawlerdetect.io"></script>
 </head>
 <body class="bg-zinc-950 text-white antialiased min-h-screen">
 
