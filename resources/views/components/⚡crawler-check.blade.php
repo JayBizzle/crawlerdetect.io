@@ -173,9 +173,10 @@ new class extends Component
             @php
                 $issueType = $isCrawler ? 'False positive' : 'False negative';
                 $issueUrl = 'https://github.com/JayBizzle/Crawler-Detect/issues/new?' . http_build_query([
+                    'template' => $isCrawler ? 'false-positive.yml' : 'false-negative.yml',
                     'title' => $issueType . ': ' . Str::limit($userAgent, 80),
-                    'body' => "**Type:** {$issueType}\n\n**User-Agent:**\n```\n{$userAgent}\n```\n\n**CrawlerDetect result:** " . ($isCrawler ? "Detected as crawler" . ($matchedName ? " (matched: `{$matchedName}`)" : "") : "Not detected as crawler") . "\n\n**Why I believe this is incorrect:**\n\n<!-- Please explain why you think this result is wrong -->\n",
-                    'labels' => $isCrawler ? 'false positive' : 'false negative',
+                    'user-agent' => $userAgent,
+                    'result' => $isCrawler ? 'Detected as crawler' . ($matchedName ? " (matched: {$matchedName})" : '') : 'Not detected as crawler',
                 ]);
             @endphp
             <div class="mt-3.5 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3.5">
