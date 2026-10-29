@@ -1109,7 +1109,8 @@
                 "issues": "https://github.com/JayBizzle/Crawler-Detect/issues",
                 "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.4.2"
             },
-            "time": "2026-10-20T18:03:06+00:00"
+            "time": "2026-10-20T18:03:06+00:00",
+            "published-time": "2026-10-20T18:04:09+00:00"
         },
         {
             "name": "laravel/framework",
@@ -8518,5 +8519,5 @@
         "php": "^8.3"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
